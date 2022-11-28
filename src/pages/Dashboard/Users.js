@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function Users() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((res) => res.json())
-      .then((data) => setUsers(data));
+    axios(`${process.env.REACT_APP_API_ENDPOINT}/users`).then((res) =>
+      setUsers(res.data)
+    );
   }, []);
 
   return (

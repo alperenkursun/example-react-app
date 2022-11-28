@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link, useLocation } from "react-router-dom";
+import axios from "axios";
 
 function UserDetail() {
   let { id } = useParams();
@@ -8,10 +9,11 @@ function UserDetail() {
   console.log(location);
 
   useEffect(() => {
+    // console.log(process.env.REACT_APP_API_ENDPOINT);
     if (!user?.id) {
-      fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
-        .then((res) => res.json())
-        .then((data) => setUser(data));
+      axios(`${process.env.REACT_APP_API_ENDPOINT}/users/${id}`).then((res) =>
+        setUser(res.data)
+      );
     }
   }, [id, user]);
 
