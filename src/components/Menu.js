@@ -6,7 +6,7 @@ function Menu() {
 
   return (
     <div>
-      <h1>Example App</h1>
+      <h1>Example App 2</h1>
       <ul className="menu">
         <li>
           <a href="#/" onClick={() => navigate(-1)}>
